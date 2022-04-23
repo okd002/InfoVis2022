@@ -15,6 +15,7 @@
 	        .append("text")			
 			.attr("x", function(d){ return d.x; })
 	        .attr("y", function(d){ return d.y; })
+			.attr("dy", "23px")
 			.text(function(d){ return d.text; })
 			//.style("fill", function(d){ return d.color; }) 
 		
@@ -24,7 +25,7 @@
 		.data(data)
 	        .enter()
 	        .append("rect")			
-	        .attr("x", function(d){ return d.x+1; })
+	        .attr("x", function(d){ return d.x+0.1; })
 	        .attr("y", function(d){ return d.y; })
 	        .attr("width", function(d){ return d.width; })
 			.attr("height", function(d){ return d.height; })
