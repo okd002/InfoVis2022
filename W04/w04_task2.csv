@@ -1,4 +1,4 @@
 text,x,y,width,height,color
-Label1,10,1000,200,"red"
-Label2,10,500,200,"green"
-Label3,10,800,200,"blue"
+Label1,10,10,1000,200,"red"
+Label2,10,40,500,200,"green"
+Label3,10,70,800,200,"blue"
