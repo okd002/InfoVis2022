@@ -9,14 +9,14 @@ d3.csv("https://okd002.github.io/InfoVis2022/W08/w08_task1.csv")
             margin: {top:10, right:10, bottom:20, left:60}
         };
 
-        const scatter_plot = new ScatterPlot( config, data );
-        scatter_plot.update();
+        const bar_chart = new BarChart( config, data );
+        bar_chart.update();
     })
     .catch( error => {
         console.log( error );
     });
 
-class ScatterPlot {
+class BarChart {
 
     constructor( config, data ) {
         this.config = {
