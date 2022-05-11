@@ -1,6 +1,6 @@
 d3.csv("https://okd002.github.io/InfoVis2022/W08/w08_task1.csv")
     .then( data => {
-        data.forEach( d => { d.label = +d.label; d.value = +d.value;});
+        data.forEach( d => { d.value = +d.value; d.label = +d.label;});
 
         var config = {
             parent: '#drawing_region',
@@ -51,17 +51,14 @@ class BarChart {
             .paddingInner(0.1);
 
         self.xaxis = d3.axisBottom( self.xscale )
-            .ticks(3)
-            .tickSize(5)
-            .tickPadding(5);
+            .ticks(5)
+            .tickSizeOuter(0);
 
         self.xaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, ${self.inner_height})`);
 
         self.yaxis = d3.axisLeft( self.yscale )
-            .ticks(3)
-            .tickSize(5)
-            .tickPadding(5);
+            .tickSizeOuter(0);
 
         self.yaxis_group = self.chart.append('g');
 
@@ -73,6 +70,7 @@ class BarChart {
         const xmin = 0;
         const xmax = d3.max( self.data, d => d.value );
         self.xscale.domain( [xmin, xmax] );
+
 
         self.yscale.domain(self.data.map(d => d.label));
 
@@ -96,7 +94,3 @@ class BarChart {
             .call( self.yaxis );
     }
 }
-
-
-
-
