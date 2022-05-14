@@ -61,7 +61,7 @@ class BarChart {
             .attr('y', self.inner_height + self.config.margin.top + xlabel_space)
             .text( self.config.xlabel );
 
-        const ylabel_space = 50;
+        const ylabel_space = 80;
         self.svg.append('text')
             .attr('transform', `rotate(-90)`)
             .attr('y', self.config.margin.left - ylabel_space)
