@@ -90,7 +90,10 @@ class LineChart {
         const ymax = d3.max( self.data, d => d.y ) + space;
         self.yscale.domain( [ymin, ymax] );
 
-     
+        self.area 
+        .x( d => self.xscale( d.x ))
+        .y1( d => self.yscale( d.y ) )
+        .y0( d3.max( self.data, d => self.yscale( d.y ) ) );
 
 
         self.render();
@@ -100,10 +103,7 @@ class LineChart {
         let self = this;
 
 
-        self.area 
-          .x( d => self.xscale( d.x ))
-          .y1( d => self.yscale( d.y ) )
-          .y0( d3.max( self.data, d => self.yscale( d.y ) ) );
+      
        
 
         self.chart.append('path')

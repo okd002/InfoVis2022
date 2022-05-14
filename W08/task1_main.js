@@ -7,7 +7,7 @@ d3.csv("https://okd002.github.io/InfoVis2022/W08/w08_task1.csv")
             width: 512,
             height: 256,
             margin: {top:25, right:50, bottom:50, left:80},
-            title: 'Sample Data',
+            title: 'Bar Chart',
             xlabel: 'X label',
             ylabel: 'Y label'
         };
