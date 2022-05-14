@@ -24,29 +24,49 @@ class LineChart {
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
 
-        self.line = d3.lime();
+        self.area = d3.area();
 
-        self.xaxis = d3.axisBottom( self.xscale )
+        self.xscale = d3.scaleLinear()
+            .range( [0, self.inner_width] );
+
+        self.yscale = d3.scaleLinear()
+            .range( [0, self.inner_height] )
+
+        self.xaxis = d3.axisBottom( self.area )
             .ticks(5)
             .tickSizeOuter(0);
-  
-        self.yaxis = d3.axisLeft( self.yscale )
-            .tickSizeOuter(0);
 
+        self.yaxis = d3.axisLeft( self.area )
+            .tickSizeOuter(0);
+   
         self.xaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, ${self.inner_height})`);
-
-        self.yaxis_group = self.chart.append('g');
+  
+        self.yaxis_group = self.chart.append('g')
+ 
        
     }
 
     update() {
         let self = this;
 
-        self.line
+        self.area
         .x( d=> d.x)
-        .y( d=> d.y)
+        .y1( d=> d.y)
         .y0( 0 ); 
+
+        const space = 10;
+
+        const xmin = 0;
+        const xmax = d3.max( self.data, d => d.x ) + space;
+        self.xscale.domain( [xmin, xmax] );
+
+        const ymin = 0;
+        const ymax = d3.max( self.data, d => d.y ) + space;
+        self.yscale.domain( [ymin, ymax] );
+
+     
+
 
         self.render();
     }
@@ -55,9 +75,9 @@ class LineChart {
         let self = this;
 
         self.svg.append("path")
-           .attr('d', area(self.data))
+           .attr('d', self.area(self.data))
            .attr('stroke', 'black')
-           .attr('fill', 'black');
+           .attr('fill', 'none');
         
 
         self.xaxis_group
