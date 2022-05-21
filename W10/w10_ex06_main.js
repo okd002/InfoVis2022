@@ -22,3 +22,4 @@ d3.select('#reverse')
         data.reverse();
         update(data);
     });
+    
