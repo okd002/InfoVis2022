@@ -11,9 +11,9 @@ d3.csv("https://okd002.github.io/InfoVis2022/W10/task1.csv")
             width: 512,
             height: 256,
             margin: {top:25, right:10, bottom:50, left:100},
-            title: 'Highest temperatures in each area(May 21)',
-            xlabel: 'Highest temperatures',
-            ylabel: 'Area'
+            title: 'Car sales by manufacturer in 2020',
+            xlabel: 'Car sales',
+            ylabel: 'Manufacturer'
         };
 
         bar_chart = new BarChart( config);
