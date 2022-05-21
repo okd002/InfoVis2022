@@ -11,9 +11,9 @@ d3.csv("https://okd002.github.io/InfoVis2022/W10/task1.csv")
             width: 512,
             height: 256,
             margin: {top:25, right:10, bottom:50, left:100},
-            title: 'Bar Chart',
-            xlabel: 'X label',
-            ylabel: 'Y label'
+            title: 'Highest temperatures in each area(May 21)',
+            xlabel: 'Highest temperatures',
+            ylabel: 'Area'
         };
 
         bar_chart = new BarChart( config);
