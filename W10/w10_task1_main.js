@@ -10,7 +10,7 @@ d3.csv("https://okd002.github.io/InfoVis2022/W10/task1.csv")
             parent: '#drawing_region',
             width: 512,
             height: 256,
-            margin: {top:25, right:10, bottom:50, left:100},
+            margin: {top:30, right:10, bottom:50, left:100},
             title: 'Car sales by manufacturer in 2020',
             xlabel: 'Car sales',
             ylabel: 'Manufacturer'
