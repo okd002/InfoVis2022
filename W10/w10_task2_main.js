@@ -8,7 +8,7 @@ d3.csv("https://okd002.github.io/InfoVis2022/W10/task2.csv")
             width: 512,
             height: 256,
             margin: {top:30, right:10, bottom:50, left:100},
-            title: 'The relationship between Team Score and Bases on Balls in professional baseball in 2021',
+            title: 'Team Score and Bases on Balls in professional baseball in 2021',
             xlabel: 'Team Score',
             ylabel: 'Bases on Balls'
         };

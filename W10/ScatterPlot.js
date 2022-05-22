@@ -52,7 +52,7 @@ class ScatterPlot {
 
         const title_space = 10;
         self.svg.append('text')
-        .style('font-size', '20px')
+        .style('font-size', '18px')
         .style('font-weight', 'bold')
         .attr('text-anchor', 'middle')
         .attr('x', self.config.width / 2)
@@ -80,14 +80,14 @@ class ScatterPlot {
         let self = this;
         
 
-        const space = 10;
-        const xmin = d3.min( self.data, d => d.x );
+        const space = 50;
+        const xmin = d3.min( self.data, d => d.x )-space;
         const xmax = d3.max( self.data, d => d.x ) + space;
-        self.xscale.domain( [0, xmax] );
+        self.xscale.domain( [xmin, xmax] );
 
-        const ymin = d3.min( self.data, d => d.y );
+        const ymin = d3.min( self.data, d => d.y )-space;
         const ymax = d3.max( self.data, d => d.y )+space;
-        self.yscale.domain( [ymax, 0] );
+        self.yscale.domain( [ymax, ymin] );
 
         self.render();
     }
