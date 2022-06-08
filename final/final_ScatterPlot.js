@@ -80,7 +80,7 @@ class ScatterPlot {
 
         const ymin = d3.min( self.data, self.yvalue );
         const ymax = d3.max( self.data, self.yvalue );
-        self.yscale.domain( [ymax, ymin] );
+        self.yscale.domain( [ymin, ymax] );
 
         self.render();
     }
@@ -104,7 +104,7 @@ class ScatterPlot {
             .on('mouseover', (e,d) => {
                 d3.select('#tooltip')
                     .style('opacity', 1)
-                    .html(`<div class="Prefectures">${d.prefectures}</div> Birth_rate: (${d.birth_rate}, First_age: ${d.first_age})`);
+                    .html(`<div class="Prefectures">${d.prefectures}</div> Birth_rate: ${d.birth_rate}, First_age: ${d.first_age}`);
             })
             .on('mousemove', (e) => {
                 const padding = 10;

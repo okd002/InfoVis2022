@@ -3,7 +3,7 @@ let scatter_plot;
 let bar_chart;
 let filter = [];
 
-d3.csv("https://vizlab-kobe-lecture.github.io/InfoVis2021/W12/iris.csv")
+d3.csv("https://okd002.github.io/InfoVis2022/final/data.csv")
     .then( data => {
         input_data = data;
         input_data.forEach( d => {
@@ -12,7 +12,7 @@ d3.csv("https://vizlab-kobe-lecture.github.io/InfoVis2021/W12/iris.csv")
         });
 
         const color_scale = d3.scaleOrdinal( d3.schemeCategory10 );
-        color_scale.domain(['setosa','versicolor','virginica']);
+        color_scale.domain(['good','birth','age','bad']);
 
         scatter_plot = new ScatterPlot( {
             parent: '#drawing_region_scatterplot',
@@ -34,7 +34,9 @@ d3.csv("https://vizlab-kobe-lecture.github.io/InfoVis2021/W12/iris.csv")
             cscale: color_scale
         }, input_data );
         bar_chart.update();
+    
     })
+
     .catch( error => {
         console.log( error );
     });
@@ -44,7 +46,7 @@ function Filter() {
         scatter_plot.data = input_data;
     }
     else {
-        scatter_plot.data = input_data.filter( d => filter.includes( d.species ) );
+        scatter_plot.data = input_data.filter( d => filter.includes( d.evalution) );
     }
     scatter_plot.update();
 }
