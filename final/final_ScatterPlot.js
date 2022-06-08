@@ -93,9 +93,9 @@ class ScatterPlot {
             .join('circle');
 
         const circle_color = 'steelblue';
-        const circle_radius = 3;
+        const circle_radius = d => d.population/100;
         circles
-            .attr("r", d.population/1000 )
+            .attr("r",  circle_radius)
             .attr("cx", d => self.xscale( self.xvalue(d) ) )
             .attr("cy", d => self.yscale( self.yvalue(d) ) )
             .attr("fill", d => self.config.cscale( self.cvalue(d) ) );
