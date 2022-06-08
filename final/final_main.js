@@ -9,6 +9,7 @@ d3.csv("https://okd002.github.io/InfoVis2022/final/data.csv")
         input_data.forEach( d => {
             d.birth_rate= +d.birth_rate;
             d.first_age = +d.first_age;
+            d.population = +d.population;
         });
 
         const color_scale = d3.scaleOrdinal( d3.schemeCategory10 );

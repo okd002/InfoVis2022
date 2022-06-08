@@ -70,7 +70,7 @@ class ScatterPlot {
     update() {
         let self = this;
 
-        self.cvalue = d => d.prefectures;
+        self.cvalue = d => d.evalution;
         self.xvalue = d => d.birth_rate;
         self.yvalue = d => d.first_age;
 
@@ -95,7 +95,7 @@ class ScatterPlot {
         const circle_color = 'steelblue';
         const circle_radius = 3;
         circles
-            .attr("r", circle_radius )
+            .attr("r", d.population/1000 )
             .attr("cx", d => self.xscale( self.xvalue(d) ) )
             .attr("cy", d => self.yscale( self.yvalue(d) ) )
             .attr("fill", d => self.config.cscale( self.cvalue(d) ) );
