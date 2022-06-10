@@ -38,15 +38,21 @@ d3.csv("https://okd002.github.io/InfoVis2022/final/data.csv")
         bar_chart.update();
 
 
-d3.select('#normal')
+    d3.select('#normal')
     .on('click', d => {
         type_num = 1;
         scatter_plot.update( type_num);
     });
 
-d3.select('#population')
+    d3.select('#population')
     .on('click', d => {
        type_num = 2;
+        scatter_plot.update( type_num);
+    });
+
+    d3.select('#wait')
+    .on('click', d => {
+       type_num = 3;
         scatter_plot.update( type_num);
     });
  

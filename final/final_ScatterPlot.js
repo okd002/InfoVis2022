@@ -71,7 +71,7 @@ class ScatterPlot {
         let self = this;
         self.type_num = type_num;
         self.cvalue = d => d.evalution;
-        if(self.type_num == 2)  self.cvalue = d => d.prefectures;
+        if(self.type_num == 2 || self.type_num == 3)  self.cvalue = d => d.prefectures;
 
         self.xvalue = d => d.birth_rate;
         self.yvalue = d => d.first_age;
@@ -98,9 +98,9 @@ class ScatterPlot {
         const circle_color = 'steelblue';
 
         var circle_radius = 3;
-        if(self.type_num == 2){   
-        //circle_radius = d => (10*(d.population-2684.404)/2749.989+50)/5;
-        circle_radius = d => d.population/300;
+        if(self.type_num == 2)     circle_radius = d => d.population/300;
+        if(self.type_num == 3)  {
+               circle_radius = d => (d.wait/d.population)*50;
         }
 
         circles
