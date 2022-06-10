@@ -1,6 +1,6 @@
 class ScatterPlot {
 
-    constructor( config, data ) {
+    constructor (config, data) {
         this.config = {
             parent: config.parent,
             width: config.width || 256,
@@ -8,8 +8,8 @@ class ScatterPlot {
             margin: config.margin || {top:10, right:10, bottom:10, left:10},
             xlabel: config.xlabel || '',
             ylabel: config.ylabel || '',
-            cscale: config.cscale
-        }
+            cscale: config.cscale,
+        };
         this.data = data;
         this.init();
     }
@@ -67,10 +67,12 @@ class ScatterPlot {
             .text( self.config.ylabel );
     }
 
-    update() {
+    update(type_num) {
         let self = this;
-
+        self.type_num = type_num;
         self.cvalue = d => d.evalution;
+        if(self.type_num == 2)  self.cvalue = d => d.prefectures;
+
         self.xvalue = d => d.birth_rate;
         self.yvalue = d => d.first_age;
 
@@ -88,13 +90,21 @@ class ScatterPlot {
     render() {
         let self = this;
 
+
         let circles = self.chart.selectAll("circle")
             .data(self.data)
             .join('circle');
 
         const circle_color = 'steelblue';
-        const circle_radius = d => d.population/100;
+
+        var circle_radius = 3;
+        if(self.type_num == 2){   
+        //circle_radius = d => (10*(d.population-2684.404)/2749.989+50)/5;
+        circle_radius = d => d.population/300;
+        }
+
         circles
+            .transition().duration(1000)
             .attr("r",  circle_radius)
             .attr("cx", d => self.xscale( self.xvalue(d) ) )
             .attr("cy", d => self.yscale( self.yvalue(d) ) )
@@ -104,7 +114,7 @@ class ScatterPlot {
             .on('mouseover', (e,d) => {
                 d3.select('#tooltip')
                     .style('opacity', 1)
-                    .html(`<div class="Prefectures">${d.prefectures}</div> Birth_rate: ${d.birth_rate}, First_age: ${d.first_age}`);
+                    .html(`<div class="Prefectures">${d.prefectures}</div> Birth_rate: ${d.birth_rate}, First_age: ${d.first_age}, Population: ${d.population*1000}`);
             })
             .on('mousemove', (e) => {
                 const padding = 10;
