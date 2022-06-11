@@ -50,7 +50,7 @@ class BarChart {
         const xlabel_space = 40;
         self.svg.append('text')
             .style('font-size', '12px')
-            .attr('x', self.config.width / 2)
+            .attr('x', (self.config.width / 2) -50)
             .attr('y', self.inner_height + self.config.margin.top + xlabel_space)
             .text( self.config.xlabel );
 

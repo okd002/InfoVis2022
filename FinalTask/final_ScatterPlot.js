@@ -71,7 +71,7 @@ class ScatterPlot {
         let self = this;
         self.type_num = type_num;
         self.cvalue = d => d.evalution;
-        if(self.type_num == 2 || self.type_num == 3)  self.cvalue = d => d.prefectures;
+        if(self.type_num == 2 || self.type_num == 3 || self.type_num == 4)  self.cvalue = d => d.prefectures;
 
         self.xvalue = d => d.birth_rate;
         self.yvalue = d => d.first_age;
@@ -82,7 +82,7 @@ class ScatterPlot {
 
         const ymin = d3.min( self.data, self.yvalue );
         const ymax = d3.max( self.data, self.yvalue );
-        self.yscale.domain( [ymin, ymax] );
+        self.yscale.domain( [ymax, ymin] );
 
         self.render();
     }
@@ -99,9 +99,9 @@ class ScatterPlot {
 
         var circle_radius = 3;
         if(self.type_num == 2)     circle_radius = d => d.population/300;
-        if(self.type_num == 3)  {
-               circle_radius = d => (d.wait/d.population)*50;
-        }
+        if(self.type_num == 3)     circle_radius = d => (d.wait/d.population)*50;
+        if(self.type_num == 4)     circle_radius = d => (10*(d.consumption-286.2)/26+50)/3;
+        
 
         circles
             .transition().duration(1000)
@@ -114,7 +114,7 @@ class ScatterPlot {
             .on('mouseover', (e,d) => {
                 d3.select('#tooltip')
                     .style('opacity', 1)
-                    .html(`<div class="Prefectures">${d.prefectures}</div> Birth_rate: ${d.birth_rate}, First_age: ${d.first_age}, Population: ${d.population*1000}`);
+                    .html(`<div class="Prefectures">${d.prefectures}</div> Birth_rate: ${d.birth_rate}, First_age: ${d.first_age}, Population: ${d.population*1000}, WaitChildren: ${d.wait},  Consumption: ${d.consumption}`);
             })
             .on('mousemove', (e) => {
                 const padding = 10;
